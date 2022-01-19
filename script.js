@@ -1,5 +1,12 @@
 window.start = function() {
-  always = setInterval(() => {
-    alert("test")
+  window.always = setInterval(() => {
+    if (document.getElementById("next-btn")) {
+      document.getElementById("next-btn").click()
+    } else {
+      
+    }
   },500)
+}
+window.stop = function() {
+  clearInterval(always)
 }
