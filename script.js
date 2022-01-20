@@ -1,15 +1,14 @@
 window.start = function() {
-  if (!window.always) {
-    window.always = setInterval(() => {
-      if (document.getElementById("next-btn")) {
-        document.getElementById("next-btn").click()
-      } else {
-        var 
-      }
-    },500)
-  } else {
-    clearInterval(always)
-  }
+  window.always = setInterval(() => {
+    if (document.getElementById("next-btn")) {
+      alert("NEXT BUTTON")
+      document.getElementById("next-btn").click()
+    } else {
+      var number = Math.floor(Math.random() * 3);
+      var choices = document.querySelectorAll(".choice")
+      choices[number].click()
+    }
+  },500)
 }
 window.stop = function() {
   clearInterval(always)
