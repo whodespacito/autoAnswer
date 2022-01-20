@@ -7,7 +7,7 @@ window.start = function() {
       var choices = document.querySelectorAll(".choice")
       choices[number].click()
     }
-  },500)
+  },30000)
 }
 window.stop = function() {
   clearInterval(always)
