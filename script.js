@@ -1,7 +1,6 @@
 window.start = function() {
   window.always = setInterval(() => {
     if (document.getElementById("next-btn")) {
-      alert("NEXT BUTTON")
       document.getElementById("next-btn").click()
     } else {
       var number = Math.floor(Math.random() * 3);
