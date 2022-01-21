@@ -9,7 +9,7 @@ window.start = function() {
         choices[number].click()
       }
       window.isItOn = true
-    },30000)
+    },500)
   } else {
     clearInterval(always)
     window.isItOn = false
