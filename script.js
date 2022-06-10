@@ -1,4 +1,4 @@
-window.sleep = function (ms) {
+function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 window.start = function() {
