@@ -1,19 +1,11 @@
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-window.start = function() {
-  window.always = setInterval(() => {
+let loop;
+function start() {
+  loop = setInterval( async () => {
     if (document.getElementById("next-btn")) {
-      document.querySelector(".answer").click()
-      await sleep(5000)
-      document.getElementById("next-btn").click()
-    } else {
-      var number = Math.floor(Math.random() * 3);
-      var choices = document.querySelectorAll(".choice")
-      choices[number].click()
+      document.querySelector(".answer").click();
+      document.getElementById("next-btn").click();
     }
-  },30000)
-}
-window.stop = function() {
-  clearInterval(always)
+    var random = Math.floor(Math.random() * 3);
+    document.querySelectorAll(".choice")[random].click();
+  }, 30000);
 }
