@@ -1,10 +1,4 @@
-/*
-.correct
-.incorrect
-*/
-
 /*TODO 
-1. add question trim DONE
 2. console.log everything added to localstorage BROKEN SOMEHOW
 3. mine bitcoin
 4. fix bugs
@@ -15,10 +9,8 @@
         you can querySelect the image and get the src
         each image has a unique url (more testing required)
     2.idk what else to do
-6. add word typing support (somehow except more how)
+6. add word typing for word quizes
     1.check for input element and image element and maybe text??
-
-
 */
 
 
@@ -52,22 +44,8 @@ function lastWord() {
         return
     }
 
-    //checks if lastWordLearn was stored (it should be stored)
-    if (!lastWordLearn) {
-        console.log("lastWordLearn is false...")
-        console.log("verifying question...")
-
-        if (question == "Spell the word you saw. It helps with later questions. For good measure, say it once aloud too!") {
-            console.log("verified true")
-            alert("answer unknown, skip...")
-        } else {
-            console.log("got false, returning")
-            return
-        }
-    }
     document.getElementById("choice").value = lastWordLearn
     lastWordLearn = ""
-
 }
 
 //answers the multiple choice question (without the images)
@@ -77,7 +55,7 @@ function wordQuiz() {
         console.log("couldn't find .choice, ending....")
         return
     }
-    lastWordLearn = ""
+
     let choice = document.querySelectorAll(".choice")
     let question = questionTrim(document.querySelector(".question"))
     choice.forEach((elm, index) => {
@@ -90,13 +68,13 @@ function wordQuiz() {
     if (document.querySelector("img") && question == "Q: Choose the word that fits best.") {
         console.log("question checked as image type...")
         console.log("guessing...")
-        let random = Math.floor(Math.random() * 4)
+        let random = Math.floor(Math.random() * (choice.length - 1))
         let picked = answerTrim(choice[random])
         choice[random].click()
         return
     }
 
-    if (!localStorage.getItem(question)) {
+    if (localStorage.getItem(question) == null) {
         //if it doesnt know the answer, guess
         console.log("didnt find an answer...")
         let random = Math.floor(Math.random() * (choice.length - 1))
