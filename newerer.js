@@ -1,6 +1,4 @@
 /*TODO 
-2. console.log everything added to localstorage BROKEN SOMEHOW
-3. mine bitcoin
 4. fix bugs
 5. add image support (somehow)
     >Currently just guesses the question
@@ -8,9 +6,10 @@
     1. check for url image?????
         you can querySelect the image and get the src
         each image has a unique url (more testing required)
-    2.idk what else to do
 6. add word typing for word quizes
     1.check for input element and image element and maybe text??
+7. change wordquiz await to utilize mutationobserver
+    idk if it will make it better it just seems cool
 */
 
 
@@ -49,13 +48,14 @@ function lastWord() {
 }
 
 //answers the multiple choice question (without the images)
-function wordQuiz() {
+async function wordQuiz() {
     console.log("Word quiz start")
     if (!document.querySelector(".choice")) {
         console.log("couldn't find .choice, ending....")
         return
     }
 
+    //removes the not sure entry in the selection
     let choice = document.querySelectorAll(".choice")
     let question = questionTrim(document.querySelector(".question"))
     choice.forEach((elm, index) => {
@@ -80,6 +80,7 @@ function wordQuiz() {
         let random = Math.floor(Math.random() * (choice.length - 1))
         let picked = answerTrim(choice[random])
         choice[random].click()
+        await new Promise(resolve => setTimeout(resolve, 2500))
 
         if (document.querySelector("h1.correct")) {
             //if guessed correctly somehow
@@ -112,7 +113,7 @@ function wordQuiz() {
 setInterval(() => {
     if (document.getElementById("next-btn")) {
         wordLearn()
-    } else if (lastWordLearn) {
+    } else if (document.getElementById("wordspell")) {
         lastWord()
     }
     else {
