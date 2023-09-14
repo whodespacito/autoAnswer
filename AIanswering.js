@@ -1,15 +1,9 @@
-/*TODO 
-4. fix bugs
-5. add image support (somehow)
-    >Currently just guesses the question
-    >Checks for an image with querySelect("img")
-    1. check for url image?????
-        you can querySelect the image and get the src
-        each image has a unique url (more testing required)
-6. add word typing for word quizes
-    1.check for input element and image element and maybe text??
-7. change wordquiz await to utilize mutationobserver
-    idk if it will make it better it just seems cool
+/*TODO
+1. fix bugs
+2. add image support
+    - each image has a unique url, so you could key the url and value the answer in local storage
+3. make "afking" better
+    - currently gets stuck on "last word" type questions, find a way to press enter for them
 */
 
 
@@ -41,7 +35,6 @@ async function query(data) {
     const result = await response.json();
     return result;
 }
-console.log(key)
 
 //i took this from stackoverflow
 //in stackoverflow we trust
@@ -176,4 +169,4 @@ setInterval(() => {
         wordQuiz()
     }
 
-}, 25000);
+}, 20000);
