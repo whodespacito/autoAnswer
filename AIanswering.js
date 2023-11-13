@@ -2,10 +2,9 @@
 1. fix bugs
 2. add image support
     - each image has a unique url, so you could key the url and value the answer in local storage
-3. make "afking" better
-    - currently gets stuck on "last word" type questions, find a way to press enter for them
 */
 
+const key = "YOUR HUGGING FACE KEY"
 
 const correct = ".correct"
 const incorrect = ".incorrect"
@@ -75,6 +74,9 @@ function lastWord() {
 
     document.getElementById("choice").value = lastWordLearn
     lastWordLearn = ""
+    var ev = document.createEvent('Event');
+    ev.initEvent('keypress');
+    document.getElementById("choice").dispatchEvent(ev)
 }
 
 //answers the multiple choice question (without the images)
@@ -169,4 +171,4 @@ setInterval(() => {
         wordQuiz()
     }
 
-}, 20000);
+}, 23000);
